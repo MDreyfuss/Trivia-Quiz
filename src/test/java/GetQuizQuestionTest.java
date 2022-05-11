@@ -17,7 +17,5 @@ class GetQuizQuestionTest {
         assertTrue(newQuestion.getQuestion1() != null);
         assertTrue(newQuestion.getCorrectAnswer1() != null);
         assertTrue(newQuestion.getIncorrectAnswers1().length == 3);
-
-
     }
 }
