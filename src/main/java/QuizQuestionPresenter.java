@@ -12,6 +12,8 @@ public class QuizQuestionPresenter {
     private final GetQuizQuestion model;
     private Disposable disposable;
     private int placementOfCorrectAnswer;
+    private int total;
+    private int score;
 
     public QuizQuestionPresenter(QuizQuestionFrame view, GetQuizQuestion model)
     {
@@ -61,14 +63,17 @@ public class QuizQuestionPresenter {
     }
 
 
-    public boolean checkAnswer(int whichOne) {
-        boolean result = true;
+    public void checkAnswer(int whichOne) {
+        total ++;
         if (whichOne != placementOfCorrectAnswer)
         {
-            result = false;
             view.setColorToRed(whichOne);
         }
+        else
+        {
+            score ++;
+        }
         view.setColorToGreen(placementOfCorrectAnswer);
-        return result;
+        view.displayScore(score, total);
     }
 }

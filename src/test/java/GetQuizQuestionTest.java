@@ -14,8 +14,8 @@ class GetQuizQuestionTest {
         NewQuestion newQuestion = getQuizQuestion.getQuizQuestion().blockingFirst();
 
         //then
-        assertTrue(newQuestion.getQuestion1() != null);
-        assertTrue(newQuestion.getCorrectAnswer1() != null);
-        assertTrue(newQuestion.getIncorrectAnswers1().length == 3);
+        assertNotNull(newQuestion.getQuestion1());
+        assertNotNull(newQuestion.getCorrectAnswer1());
+        assertEquals(3, newQuestion.getIncorrectAnswers1().length);
     }
 }

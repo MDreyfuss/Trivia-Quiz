@@ -9,8 +9,6 @@ public class QuizQuestionFrame extends JFrame {
     private JLabel questionLabel;
     private ArrayList<JButton> buttons;
     private JLabel scoreLabel;
-    private int total;
-    private int score;
 
     public QuizQuestionFrame()
     {
@@ -40,8 +38,6 @@ public class QuizQuestionFrame extends JFrame {
 
         GetQuizQuestion model = new GetQuizQuestion();
         presenter = new QuizQuestionPresenter(this, model);
-        score = 0;
-        total = 0;
         presenter.nextQuestion();
     }
 
@@ -52,26 +48,17 @@ public class QuizQuestionFrame extends JFrame {
 
 
     private void onSubmitClicked(ActionEvent actionEvent, int whichOne) {
-       total ++;
-        if (presenter.checkAnswer(whichOne))
-        {
-            score ++;
-        }
-        displayScore(score, total);
-        //pause
-        continueAfterPause();
-    }
-
-    private void displayScore(int score, int total) {
-        scoreLabel.setText("Score: " + score + "/" + total);
-    }
-
-    private void continueAfterPause() {
+        presenter.checkAnswer(whichOne);
+        //pause after recolor
         resetColors();
         presenter.nextQuestion();
     }
 
-    private void resetColors() {
+    public void displayScore(int score, int total) {
+        scoreLabel.setText("Score: " + score + "/" + total);
+    }
+
+    public void resetColors() {
 
         for (JButton button: buttons) {
             button.setBackground(null);
@@ -93,11 +80,11 @@ public class QuizQuestionFrame extends JFrame {
         frame.setVisible(true);
     }
 
-    public void setColorToRed(int whichOne) {
-        buttons.get(whichOne).setBackground(Color.RED);
+    public void setColorToRed(int index) {
+        buttons.get(index).setBackground(Color.RED);
     }
 
-    public void setColorToGreen(int placementOfCorrectAnswer) {
-        buttons.get(placementOfCorrectAnswer).setBackground(Color.GREEN);
+    public void setColorToGreen(int index) {
+        buttons.get(index).setBackground(Color.GREEN);
     }
 }
