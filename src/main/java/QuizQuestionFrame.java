@@ -8,6 +8,9 @@ public class QuizQuestionFrame extends JFrame {
     private final QuizQuestionPresenter presenter;
     private JLabel questionLabel;
     private ArrayList<JButton> buttons;
+    private JLabel scoreLabel;
+    private int total;
+    private int score;
 
     public QuizQuestionFrame()
     {
@@ -17,8 +20,6 @@ public class QuizQuestionFrame extends JFrame {
 
         setLayout(new FlowLayout());
 
-        JPanel questionsPanel = new JPanel();
-        questionsPanel.setLayout(new BoxLayout(questionsPanel, BoxLayout.PAGE_AXIS));
         questionLabel = new JLabel("Question");
         add(questionLabel);
 
@@ -34,8 +35,13 @@ public class QuizQuestionFrame extends JFrame {
             buttons.get(i).addActionListener(actionEvent -> onSubmitClicked(actionEvent, index));
         }
 
+        scoreLabel = new JLabel("Score: 0/0");
+        add(scoreLabel);
+
         GetQuizQuestion model = new GetQuizQuestion();
         presenter = new QuizQuestionPresenter(this, model);
+        score = 0;
+        total = 0;
         presenter.nextQuestion();
     }
 
@@ -46,9 +52,18 @@ public class QuizQuestionFrame extends JFrame {
 
 
     private void onSubmitClicked(ActionEvent actionEvent, int whichOne) {
-        presenter.checkAnswer(whichOne);
+       total ++;
+        if (presenter.checkAnswer(whichOne))
+        {
+            score ++;
+        }
+        displayScore(score, total);
         //pause
         continueAfterPause();
+    }
+
+    private void displayScore(int score, int total) {
+        scoreLabel.setText("Score: " + score + "/" + total);
     }
 
     private void continueAfterPause() {
