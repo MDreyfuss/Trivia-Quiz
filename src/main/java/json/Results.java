@@ -3,7 +3,7 @@ package json;
 import com.google.gson.annotations.SerializedName;
 
 public class Results {
-    
+
     String question;
 
     @SerializedName("correct_answer")

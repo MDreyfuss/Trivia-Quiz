@@ -1,3 +1,4 @@
+import io.reactivex.Observable;
 import json.NewQuestion;
 import json.OpenTriviaDatabase;
 import retrofit2.Retrofit;
@@ -18,8 +19,8 @@ public class GetQuizQuestion {
         service = retrofit.create(OpenTriviaDatabase.class);
     }
 
-    public NewQuestion getQuizQuestion() {
-        NewQuestion question = service.getQuestion();
+    public Observable<NewQuestion> getQuizQuestion() {
+        Observable<NewQuestion> question = service.getQuestion();
 
         return question;
     }
