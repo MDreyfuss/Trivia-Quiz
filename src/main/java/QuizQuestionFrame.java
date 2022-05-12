@@ -9,6 +9,7 @@ public class QuizQuestionFrame extends JFrame {
     private JLabel questionLabel;
     private ArrayList<JButton> buttons;
     private JLabel scoreLabel;
+    private JButton nextQButton;
 
     public QuizQuestionFrame()
     {
@@ -36,22 +37,28 @@ public class QuizQuestionFrame extends JFrame {
         scoreLabel = new JLabel("Score: 0/0");
         add(scoreLabel);
 
+        nextQButton = new JButton("Next Question");
+        add(nextQButton);
+        nextQButton.addActionListener(this::onNextQClicked);
+
         GetQuizQuestion model = new GetQuizQuestion();
         presenter = new QuizQuestionPresenter(this, model);
         presenter.nextQuestion();
     }
 
+    private void onNextQClicked(ActionEvent actionEvent) {
+        resetColors();
+        presenter.nextQuestion();
+    }
+
     public void setQuestion(String question)
     {
-        questionLabel.setText(question);
+        questionLabel.setText("<html>" + question + "</html>");
     }
 
 
     private void onSubmitClicked(ActionEvent actionEvent, int whichOne) {
         presenter.checkAnswer(whichOne);
-        //pause after recolor
-        resetColors();
-        presenter.nextQuestion();
     }
 
     public void displayScore(int score, int total) {
@@ -68,7 +75,7 @@ public class QuizQuestionFrame extends JFrame {
     public void setAnswers(ArrayList<String> abcOrder)
     {
         for (int i = 0; i < abcOrder.size(); i++) {
-            buttons.get(i).setText(abcOrder.get(i));
+            buttons.get(i).setText("<html>" + abcOrder.get(i) + "</html>");
         }
     }
 
