@@ -1,17 +1,21 @@
 import json.NewQuestion;
+import json.OpenTriviaDatabase;
+import json.OpenTriviaDatabaseFactory;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GetQuizQuestionTest {
+class OpenTriviaDatabaseFactoryTest {
 
     @Test
     void getQuizQuestion() {
         //given
-        GetQuizQuestion getQuizQuestion = new GetQuizQuestion();
+        OpenTriviaDatabaseFactory factory = new OpenTriviaDatabaseFactory();
+        OpenTriviaDatabase service = factory.getInstance();
 
         //when
-        NewQuestion newQuestion = getQuizQuestion.getQuizQuestion().blockingFirst();
+        NewQuestion newQuestion = service.getQuizQuestion().blockingFirst();
+
 
         //then
         assertNotNull(newQuestion.getQuestion1());

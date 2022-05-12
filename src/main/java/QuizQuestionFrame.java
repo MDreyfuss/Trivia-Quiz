@@ -1,3 +1,5 @@
+import json.OpenTriviaDatabaseFactory;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -41,9 +43,11 @@ public class QuizQuestionFrame extends JFrame {
         add(nextQButton);
         nextQButton.addActionListener(this::onNextQClicked);
 
-        GetQuizQuestion model = new GetQuizQuestion();
-        presenter = new QuizQuestionPresenter(this, model);
+        OpenTriviaDatabaseFactory factory = new OpenTriviaDatabaseFactory();
+        presenter = new QuizQuestionPresenter(this, factory.getInstance());
+
         presenter.nextQuestion();
+
     }
 
     private void onNextQClicked(ActionEvent actionEvent) {

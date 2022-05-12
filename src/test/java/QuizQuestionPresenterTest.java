@@ -1,4 +1,5 @@
 import json.NewQuestion;
+import json.OpenTriviaDatabase;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 class QuizQuestionPresenterTest {
 
     QuizQuestionFrame view = mock(QuizQuestionFrame.class);
-    GetQuizQuestion model = mock(GetQuizQuestion.class);
+    OpenTriviaDatabase model = mock(OpenTriviaDatabase.class);
     QuizQuestionPresenter presenter = new QuizQuestionPresenter(view, model);
     NewQuestion question = mock(NewQuestion.class);
     ArrayList<String> abc = new ArrayList<>();

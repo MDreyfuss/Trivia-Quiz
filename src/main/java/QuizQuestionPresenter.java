@@ -2,6 +2,7 @@ import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import json.NewQuestion;
+import json.OpenTriviaDatabase;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,13 +10,13 @@ import java.util.Collections;
 public class QuizQuestionPresenter {
 
     private final QuizQuestionFrame view;
-    private final GetQuizQuestion model;
+    private final OpenTriviaDatabase model;
     private Disposable disposable;
     private int placementOfCorrectAnswer;
     private int total;
     private int score;
 
-    public QuizQuestionPresenter(QuizQuestionFrame view, GetQuizQuestion model)
+    public QuizQuestionPresenter(QuizQuestionFrame view, OpenTriviaDatabase model)
     {
         this.view = view;
         this.model = model;
