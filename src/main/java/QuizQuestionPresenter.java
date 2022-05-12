@@ -1,4 +1,4 @@
-import io.reactivex.Observable;
+import io.reactivex.Single;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import json.NewQuestion;
@@ -24,7 +24,7 @@ public class QuizQuestionPresenter {
 
     public void nextQuestion()
     {
-        Observable<NewQuestion> question = model.getQuizQuestion();
+        Single<NewQuestion> question = model.getQuizQuestion();
 
         disposable = question
                 .subscribeOn(Schedulers.io())

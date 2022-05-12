@@ -1,10 +1,10 @@
+import io.reactivex.Single;
 import json.NewQuestion;
 import json.OpenTriviaDatabase;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import io.reactivex.Observable;
 import io.reactivex.plugins.RxJavaPlugins;
 import io.reactivex.schedulers.Schedulers;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,7 +29,7 @@ class QuizQuestionPresenterTest {
         doReturn("What color was George Washington's white horse?").when(question).getQuestion1();
         doReturn("black").when(question).getCorrectAnswer1();
         doReturn(new String[]{"white", "green", "blue"}).when(question).getIncorrectAnswers1();
-        doReturn(Observable.just(question))
+        doReturn(Single.just(question))
                 .when(model).getQuizQuestion();
         abc.add("black");
         abc.add("blue");

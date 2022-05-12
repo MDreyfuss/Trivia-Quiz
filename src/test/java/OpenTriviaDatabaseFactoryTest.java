@@ -14,7 +14,7 @@ class OpenTriviaDatabaseFactoryTest {
         OpenTriviaDatabase service = factory.getInstance();
 
         //when
-        NewQuestion newQuestion = service.getQuizQuestion().blockingFirst();
+        NewQuestion newQuestion = service.getQuizQuestion().blockingGet();
 
 
         //then
