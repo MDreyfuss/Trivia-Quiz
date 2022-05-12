@@ -62,7 +62,7 @@ class QuizQuestionPresenterTest {
         //then
         verify(view).setColorToRed(2);
         verify(view).setColorToGreen(0);
-        verify(view).displayScore(0,1);
+        verify(view).displayScore(0, 1);
     }
 
     @Test
@@ -74,6 +74,6 @@ class QuizQuestionPresenterTest {
         presenter.checkAnswer(0);
 
         //then
-        verify(view).displayScore(1,1);
+        verify(view).displayScore(1, 1);
     }
 }

@@ -11,7 +11,7 @@ public class QuizQuestionFrame extends JFrame {
     private JLabel questionLabel;
     private ArrayList<JButton> buttons;
     private JLabel scoreLabel;
-    private JButton nextQButton;
+    private JButton nextQuestionButton;
 
     public QuizQuestionFrame()
     {
@@ -39,9 +39,9 @@ public class QuizQuestionFrame extends JFrame {
         scoreLabel = new JLabel("Score: 0/0");
         add(scoreLabel);
 
-        nextQButton = new JButton("Next Question");
-        add(nextQButton);
-        nextQButton.addActionListener(this::onNextQClicked);
+        nextQuestionButton = new JButton("Next Question");
+        add(nextQuestionButton);
+        nextQuestionButton.addActionListener(this::onNextQuestionClicked);
 
         OpenTriviaDatabaseFactory factory = new OpenTriviaDatabaseFactory();
         presenter = new QuizQuestionPresenter(this, factory.getInstance());
@@ -50,7 +50,7 @@ public class QuizQuestionFrame extends JFrame {
 
     }
 
-    private void onNextQClicked(ActionEvent actionEvent) {
+    private void onNextQuestionClicked(ActionEvent actionEvent) {
         resetColors();
         presenter.nextQuestion();
     }
@@ -71,7 +71,7 @@ public class QuizQuestionFrame extends JFrame {
 
     public void resetColors() {
 
-        for (JButton button: buttons) {
+        for (JButton button : buttons) {
             button.setBackground(null);
         }
     }

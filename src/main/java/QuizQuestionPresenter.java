@@ -65,14 +65,13 @@ public class QuizQuestionPresenter {
 
 
     public void checkAnswer(int whichOne) {
-        total ++;
+        total++;
         if (whichOne != placementOfCorrectAnswer)
         {
             view.setColorToRed(whichOne);
-        }
-        else
+        } else
         {
-            score ++;
+            score++;
         }
         view.setColorToGreen(placementOfCorrectAnswer);
         view.displayScore(score, total);
