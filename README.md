@@ -1,15 +1,19 @@
-#Trivia Quiz
+# Trivia Quiz
 
-######Miriam Dreyfuss
+###### Miriam Dreyfuss
 
 
 A trivia quiz using the [Open Trivia Database API](https://opentdb.com/api_config.php)
 
 This repository uses:
 - Retrofit
-- list of other stuff, get links.
+- Gson
+- Junit
+- Mockito
+- Rx
+- Gradle
 
-###How to use:
+### How to use:
 
 Upon opening:
 
