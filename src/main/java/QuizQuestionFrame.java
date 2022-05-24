@@ -21,16 +21,16 @@ public class QuizQuestionFrame extends JFrame {
 
         setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 
-        add(Box.createRigidArea(new Dimension(0,10)));
+        add(Box.createRigidArea(new Dimension(0, 10)));
 
         questionLabel = new JLabel("Question");
         add(questionLabel);
         questionLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        add(Box.createRigidArea(new Dimension(0,30)));
+        add(Box.createRigidArea(new Dimension(0, 30)));
 
         JPanel buttonsPanel = new JPanel();
-        buttonsPanel.setLayout(new GridLayout(2,2, 30, 30));
+        buttonsPanel.setLayout(new GridLayout(2, 2, 30, 30));
         buttons = new ArrayList<>();
         for (int i = 0; i < 4; i++)
         {
@@ -44,9 +44,9 @@ public class QuizQuestionFrame extends JFrame {
         }
 
         add(buttonsPanel);
-        buttonsPanel.setMaximumSize(new Dimension(1000,100));
+        buttonsPanel.setMaximumSize(new Dimension(1000, 100));
 
-        add(Box.createRigidArea(new Dimension(0,30)));
+        add(Box.createRigidArea(new Dimension(0, 30)));
 
         scoreLabel = new JLabel("Score: 0/0");
         add(scoreLabel);
