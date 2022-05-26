@@ -19,11 +19,18 @@ public class QuizQuestionFrame extends JFrame {
         setSize(400, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        setLayout(new FlowLayout());
+        setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+
+        add(Box.createRigidArea(new Dimension(0, 10)));
 
         questionLabel = new JLabel("Question");
         add(questionLabel);
+        questionLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        add(Box.createRigidArea(new Dimension(0, 30)));
+
+        JPanel buttonsPanel = new JPanel();
+        buttonsPanel.setLayout(new GridLayout(2, 2, 30, 30));
         buttons = new ArrayList<>();
         for (int i = 0; i < 4; i++)
         {
@@ -31,16 +38,23 @@ public class QuizQuestionFrame extends JFrame {
         }
 
         for (int i = 0; i < buttons.size(); i++) {
-            add(buttons.get(i));
+            buttonsPanel.add(buttons.get(i));
             int index = i;
             buttons.get(i).addActionListener(actionEvent -> onSubmitClicked(actionEvent, index));
         }
 
+        add(buttonsPanel);
+        buttonsPanel.setMaximumSize(new Dimension(1000, 100));
+
+        add(Box.createRigidArea(new Dimension(0, 30)));
+
         scoreLabel = new JLabel("Score: 0/0");
         add(scoreLabel);
+        scoreLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         nextQuestionButton = new JButton("Next Question");
         add(nextQuestionButton);
+        nextQuestionButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         nextQuestionButton.addActionListener(this::onNextQuestionClicked);
 
         OpenTriviaDatabaseFactory factory = new OpenTriviaDatabaseFactory();
