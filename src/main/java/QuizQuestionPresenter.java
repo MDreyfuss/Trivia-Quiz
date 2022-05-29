@@ -4,21 +4,24 @@ import io.reactivex.schedulers.Schedulers;
 import json.NewQuestion;
 import json.OpenTriviaDatabase;
 
+import javax.inject.Provider;
+import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.Collections;
 
+@Singleton
 public class QuizQuestionPresenter {
 
-    private final QuizQuestionFrame view;
+    private final Provider<QuizQuestionFrame> viewProvider;
     private final OpenTriviaDatabase model;
     private Disposable disposable;
     private int placementOfCorrectAnswer;
     private int total;
     private int score;
 
-    public QuizQuestionPresenter(QuizQuestionFrame view, OpenTriviaDatabase model)
+    public QuizQuestionPresenter(Provider<QuizQuestionFrame> viewProvider, OpenTriviaDatabase model)
     {
-        this.view = view;
+        this.viewProvider = viewProvider;
         this.model = model;
     }
 
@@ -39,7 +42,7 @@ public class QuizQuestionPresenter {
     }
 
     private void onNext(NewQuestion question) {
-        view.setQuestion(question.getQuestion1());
+        viewProvider.get().setQuestion(question.getQuestion1());
 
         String[] answers = question.getIncorrectAnswers1();
         String correct = question.getCorrectAnswer1();
@@ -54,13 +57,13 @@ public class QuizQuestionPresenter {
 
         placementOfCorrectAnswer = abcOrder.indexOf(correct);
 
-        view.setAnswers(abcOrder);
+        viewProvider.get().setAnswers(abcOrder);
 
     }
 
     private void onError(Throwable throwable) {
         throwable.printStackTrace();
-        view.showError();
+        viewProvider.get().showError();
     }
 
 
@@ -68,12 +71,12 @@ public class QuizQuestionPresenter {
         total++;
         if (whichOne != placementOfCorrectAnswer)
         {
-            view.setColorToRed(whichOne);
+            viewProvider.get().setColorToRed(whichOne);
         } else
         {
             score++;
         }
-        view.setColorToGreen(placementOfCorrectAnswer);
-        view.displayScore(score, total);
+        viewProvider.get().setColorToGreen(placementOfCorrectAnswer);
+        viewProvider.get().displayScore(score, total);
     }
 }
