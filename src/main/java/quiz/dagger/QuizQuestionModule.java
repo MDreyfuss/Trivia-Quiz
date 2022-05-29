@@ -1,4 +1,4 @@
-package dagger;
+package quiz.dagger;
 
 import json.OpenTriviaDatabase;
 import json.OpenTriviaDatabaseFactory;

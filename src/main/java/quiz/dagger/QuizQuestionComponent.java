@@ -1,7 +1,7 @@
-package dagger;
+package quiz.dagger;
 
 import dagger.Component;
-import dagger.QuizQuestionModule;
+import quiz.QuizQuestionFrame;
 
 import javax.inject.Singleton;
 

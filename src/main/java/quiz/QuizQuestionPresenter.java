@@ -1,9 +1,12 @@
+package quiz;
+
 import io.reactivex.Single;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import json.NewQuestion;
 import json.OpenTriviaDatabase;
 
+import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.inject.Singleton;
 import java.util.ArrayList;
@@ -19,6 +22,7 @@ public class QuizQuestionPresenter {
     private int total;
     private int score;
 
+    @Inject
     public QuizQuestionPresenter(Provider<QuizQuestionFrame> viewProvider, OpenTriviaDatabase model)
     {
         this.viewProvider = viewProvider;

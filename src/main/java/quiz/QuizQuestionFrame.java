@@ -1,8 +1,6 @@
-import dagger.internal.DaggerCollections;
-import dagger.internal.DaggerGenerated;
-import json.OpenTriviaDatabaseFactory;
-import dagger.QuizQuestionComponent;
-import dagger.DaggerQuizQuestionComponent;
+package quiz;
+
+import quiz.dagger.DaggerQuizQuestionComponent;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.swing.*;
@@ -65,9 +63,6 @@ public class QuizQuestionFrame extends JFrame {
         add(nextQuestionButton);
         nextQuestionButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         nextQuestionButton.addActionListener(this::onNextQuestionClicked);
-
-        //OpenTriviaDatabaseFactory factory = new OpenTriviaDatabaseFactory();
-        //presenter = new QuizQuestionPresenter(this, factory.getInstance());
 
         presenter.nextQuestion();
 

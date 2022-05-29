@@ -8,6 +8,8 @@ import static org.mockito.Mockito.verify;
 import io.reactivex.plugins.RxJavaPlugins;
 import io.reactivex.schedulers.Schedulers;
 import org.junit.jupiter.api.BeforeEach;
+import quiz.QuizQuestionFrame;
+import quiz.QuizQuestionPresenter;
 
 import javax.inject.Provider;
 import java.util.ArrayList;
