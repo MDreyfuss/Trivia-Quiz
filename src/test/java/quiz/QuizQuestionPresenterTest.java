@@ -1,3 +1,5 @@
+package quiz;
+
 import io.reactivex.Single;
 import json.NewQuestion;
 import json.OpenTriviaDatabase;

@@ -1,3 +1,5 @@
+package json;
+
 import json.NewQuestion;
 import json.OpenTriviaDatabase;
 import json.OpenTriviaDatabaseFactory;
