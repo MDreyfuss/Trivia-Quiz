@@ -1,10 +1,14 @@
-import json.OpenTriviaDatabaseFactory;
+package quiz;
 
+import quiz.dagger.DaggerQuizQuestionComponent;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
+@Singleton
 public class QuizQuestionFrame extends JFrame {
 
     private final QuizQuestionPresenter presenter;
@@ -13,8 +17,11 @@ public class QuizQuestionFrame extends JFrame {
     private JLabel scoreLabel;
     private JButton nextQuestionButton;
 
-    public QuizQuestionFrame()
+    @Inject
+    public QuizQuestionFrame(QuizQuestionPresenter presenter)
     {
+        this.presenter = presenter;
+
         setTitle("Trivia Quiz");
         setSize(400, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,9 +64,6 @@ public class QuizQuestionFrame extends JFrame {
         nextQuestionButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         nextQuestionButton.addActionListener(this::onNextQuestionClicked);
 
-        OpenTriviaDatabaseFactory factory = new OpenTriviaDatabaseFactory();
-        presenter = new QuizQuestionPresenter(this, factory.getInstance());
-
         presenter.nextQuestion();
 
     }
@@ -101,7 +105,7 @@ public class QuizQuestionFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        QuizQuestionFrame frame = new QuizQuestionFrame();
+        QuizQuestionFrame frame = DaggerQuizQuestionComponent.create().getQuizQuestionFrame();
         frame.setVisible(true);
     }
 

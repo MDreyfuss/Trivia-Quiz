@@ -8,14 +8,18 @@ import static org.mockito.Mockito.verify;
 import io.reactivex.plugins.RxJavaPlugins;
 import io.reactivex.schedulers.Schedulers;
 import org.junit.jupiter.api.BeforeEach;
+import quiz.QuizQuestionFrame;
+import quiz.QuizQuestionPresenter;
 
+import javax.inject.Provider;
 import java.util.ArrayList;
 
 class QuizQuestionPresenterTest {
 
     QuizQuestionFrame view = mock(QuizQuestionFrame.class);
     OpenTriviaDatabase model = mock(OpenTriviaDatabase.class);
-    QuizQuestionPresenter presenter = new QuizQuestionPresenter(view, model);
+    Provider<QuizQuestionFrame> viewProvider = () -> view;
+    QuizQuestionPresenter presenter = new QuizQuestionPresenter(viewProvider, model);
     NewQuestion question = mock(NewQuestion.class);
     ArrayList<String> abc = new ArrayList<>();
 
